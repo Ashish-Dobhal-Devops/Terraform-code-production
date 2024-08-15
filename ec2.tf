@@ -6,9 +6,9 @@ module "jump_server" {
   name           = "jump-server"
   ami            = var.ami_id
   instance_type  = var.instance_type
-  key_name       = var.key_name 
+  key_name       = var.key_name
 
-  vpc_security_group_ids = [module.hub_security_group.this_security_group_id, aws_security_group.hub_admin_sg.id]
+  vpc_security_group_ids = [aws_security_group.hub_security_group.id, aws_security_group.hub_admin_sg.id]
   subnet_id              = element(module.hub_vpc.public_subnets, 1)
 
   tags = {
@@ -23,9 +23,9 @@ module "bastion_server" {
   name           = "bastion-server"
   ami            = var.ami_id
   instance_type  = var.instance_type
-  key_name       = var.key_name 
+  key_name       = var.key_name
 
-  vpc_security_group_ids = [aws_security_group.prod_private_sg.id, module.prod_security_group.this_security_group_id]
+  vpc_security_group_ids = [aws_security_group.prod_private_sg.id, aws_security_group.prod_security_group.id]
   subnet_id              = element(module.prod_vpc.private_subnets, 0)
 
   tags = {
