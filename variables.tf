@@ -1,7 +1,7 @@
 variable "region" {
   description = "AWS region"
   type        = string
-  default     = "us-east-1"
+  default     = "ap-south-1"
 }
 
 variable "hub_vpc_cidr" {
@@ -31,13 +31,13 @@ variable "prod_private_subnets" {
 variable "availability_zones" {
   description = "Availability Zones"
   type        = list(string)
-  default     = ["us-east-1a", "us-east-1b"]
+  default     = ["ap-south-1a", "ap-south-1b"]
 }
 
 variable "ami_id" {
   description = "AMI ID for the EC2 instances"
   type        = string
-  default     = "ami-0c55b159cbfafe1f0"
+  default     = "ami-0c2af51e265bd5e0e"
 }
 
 variable "instance_type" {
@@ -49,5 +49,5 @@ variable "instance_type" {
 variable "key_name" {
   description = "The name of the SSH key pair"
   type        = string
-  default     = "my_terraform_key"
+  default     = "terraform-code-production-key"
 }
